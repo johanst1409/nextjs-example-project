@@ -1,9 +1,7 @@
+import { PokemonTypeInterface } from "../../types/pokemon";
+
 interface PokemonTypesProps {
-    types: {
-        type: {
-            name: string;
-        }
-    }[]
+    types: PokemonTypeInterface[]
 }
 
 const PokemonTypes: React.FC<PokemonTypesProps> = ({ types }) => {

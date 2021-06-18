@@ -1,23 +1,10 @@
 import { GetServerSideProps, NextPage } from "next";
 import PokemonHeader from "../components/pokedex/PokemonHeader";
 import PokemonTypes from "../components/pokedex/PokemonTypes";
+import { PokemonInterface } from "../types/pokemon";
 
 interface PokemonProps {
-    pokemon: {
-        name: string;
-        sprites: {
-            other: {
-                'official-artwork': {
-                    front_default: string;
-                }
-            }
-        };
-        types: {
-            type: {
-                name: string;
-            }
-        }[]
-    }
+    pokemon: PokemonInterface
 }
 
 const Pokemon: NextPage<PokemonProps> = ({ pokemon }) => {
@@ -25,7 +12,7 @@ const Pokemon: NextPage<PokemonProps> = ({ pokemon }) => {
         <>
             <PokemonHeader
                 name={pokemon.name}
-                image={pokemon.sprites.other['official-artwork'].front_default}
+                image={pokemon.image}
             />
             <PokemonTypes
                 types={pokemon.types}
@@ -40,7 +27,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
     return {
         props: {
-            pokemon: pokemon
+            pokemon: {
+                ...pokemon,
+                image: pokemon.sprites.other['official-artwork'].front_default
+            }
         }
     };
 }

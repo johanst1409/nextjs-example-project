@@ -1,11 +1,9 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import { PokemonListItemInterface } from "../../types/pokemon";
 
 interface PokemonTileProps {
-    pokemon: {
-        name: string;
-        url: string;
-    }
+    pokemon: PokemonListItemInterface;
 }
 
 const PokemonTile: React.FC<PokemonTileProps> = ({ pokemon }) => {

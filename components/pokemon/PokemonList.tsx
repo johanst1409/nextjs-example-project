@@ -1,8 +1,9 @@
 import React from "react";
+import { PokemonListItemInterface } from "../../types/pokemon";
 import PokemonTile from "./PokemonTile";
 
 interface PokemonListProps {
-    pokemon: any[];
+    pokemon: PokemonListItemInterface[];
 }
 
 const PokemonList: React.FC<PokemonListProps> = ({ pokemon }) => {

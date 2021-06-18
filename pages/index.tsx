@@ -1,8 +1,9 @@
 import { GetServerSideProps, NextPage } from 'next'
 import PokemonList from '../components/pokemon/PokemonList'
+import { PokemonListItemInterface } from '../types/pokemon'
 
 interface HomeProps {
-  pokemon: any[];
+  pokemon: PokemonListItemInterface[];
 }
 
 const Home: NextPage<HomeProps> = ({ pokemon }) => {
