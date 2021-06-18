@@ -7,9 +7,9 @@ interface PokemonTypesProps {
 const PokemonTypes: React.FC<PokemonTypesProps> = ({ types }) => {
     return (
         <ul>
-            {types.map(type => {
+            {types.map((type, index) => {
                 return (
-                    <li>{type.type.name}</li>
+                    <li key={index}>{type.type.name}</li>
                 )
             })}
         </ul>

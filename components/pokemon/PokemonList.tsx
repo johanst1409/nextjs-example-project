@@ -8,11 +8,11 @@ interface PokemonListProps {
 
 const PokemonList: React.FC<PokemonListProps> = ({ pokemon }) => {
     return (
-        <>
+        <ul>
             {pokemon.map((creature, index) => {
                 return <PokemonTile pokemon={creature} key={index} />
             })}
-        </>
+        </ul>
     )
 }
 

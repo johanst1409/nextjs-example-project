@@ -12,7 +12,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse<DataIn
 
     const result = await fetch(`${process.env.API_HOST}/pokemon?limit=${pageSize}&offset=${offset}`).then(response => response.json());
 
-    response.status(200).json(result.results);
+    response.status(200).json(result);
 }
 
 export default handler;

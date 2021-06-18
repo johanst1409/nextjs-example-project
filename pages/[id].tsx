@@ -1,4 +1,5 @@
 import { GetServerSideProps, NextPage } from "next";
+import Link from "next/link";
 import PokemonHeader from "../components/pokedex/PokemonHeader";
 import PokemonTypes from "../components/pokedex/PokemonTypes";
 import { PokemonInterface } from "../types/pokemon";
@@ -10,6 +11,9 @@ interface PokemonProps {
 const Pokemon: NextPage<PokemonProps> = ({ pokemon }) => {
     return (
         <>
+            <div>
+                <Link href="/">Back</Link>
+            </div>
             <PokemonHeader
                 name={pokemon.name}
                 image={pokemon.image}

@@ -6,9 +6,10 @@ import { PokemonListItemInterface } from '../types/pokemon'
 interface HomeProps {
   initialPage: number;
   pokemon: PokemonListItemInterface[];
+  totalCount: number;
 }
 
-const Home: NextPage<HomeProps> = ({ pokemon, initialPage }) => {
+const Home: NextPage<HomeProps> = ({ pokemon, initialPage, totalCount }) => {
   const [pokemonList, setPokemonList] = useState<PokemonListItemInterface[]>(pokemon);
   const [currentPage, setCurrentPage] = useState<number>(initialPage);
 
@@ -20,7 +21,7 @@ const Home: NextPage<HomeProps> = ({ pokemon, initialPage }) => {
 
       setPokemonList([
         ...pokemonList,
-        ...data
+        ...data.results
       ]);
       setCurrentPage(nextPage);
     });
@@ -29,7 +30,9 @@ const Home: NextPage<HomeProps> = ({ pokemon, initialPage }) => {
   return (
       <>
         <PokemonList pokemon={pokemonList} />
-        <button type="button" onClick={loadMore}>Load more</button>
+        { (pokemonList.length < totalCount) && 
+          <button type="button" onClick={loadMore}>Load more</button>
+        }
       </>
   )
 }
@@ -40,7 +43,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   return {
     props: {
       initialPage: currentPage,
-      pokemon: pokemon
+      pokemon: pokemon.results,
+      totalCount: pokemon.count
     }
   }
 }
