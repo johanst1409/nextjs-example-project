@@ -9,7 +9,7 @@ const PokemonHeader: React.FC<PokemonHeaderProps> = ({ name, image }) => {
             <img src={image} alt={name} />
             <h1>{name}</h1>
         </>
-    )
-}
+    );
+};
 
 export default PokemonHeader;

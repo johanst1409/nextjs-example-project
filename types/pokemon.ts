@@ -13,5 +13,5 @@ export interface PokemonInterface {
 export interface PokemonTypeInterface {
     type: {
         name: string;
-    }
+    };
 }
